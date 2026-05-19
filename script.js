@@ -16,7 +16,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
 document.querySelectorAll(
-  '.pillar, .service-detail, .meister-detail, .md-image, .md-body, .wert, .g, .section-head, .phone-display, .contact-card, .info-strip > div, .form-head, .contact-form'
+  '.pillar, .service-detail, .meister-detail, .md-image, .md-body, .wert, .g, .section-head, .phone-display, .contact-card, .form-head, .contact-form'
 ).forEach((el, i) => {
   el.classList.add('reveal');
   el.dataset.delay = (i % 4) * 100;
