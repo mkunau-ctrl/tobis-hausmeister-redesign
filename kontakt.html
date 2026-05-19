@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kontakt — Tobi's Hausmeisterservice</title>
+<meta name="description" content="Telefon, E-Mail, WhatsApp — alle Wege zu Tobi." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="kontakt">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="index.html" class="brand">
+    <span class="brand-mark">⚡</span>
+    <span class="brand-text">
+      <strong>Tobi's</strong>
+      <span>Hausmeisterservice</span>
+    </span>
+  </a>
+  <nav class="nav-links">
+    <a href="index.html">Start</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="meister.html">Der Meister</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="kontakt.html" class="nav-cta is-active">Kontakt →</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Menü">
+    <span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+<!-- SUB-HERO -->
+<section class="sub-hero kontakt-hero">
+  <div class="sub-hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=2400&q=80" alt="" loading="eager" />
+  </div>
+  <div class="sub-hero-inner">
+    <span class="breadcrumb">Start / <em>Kontakt</em></span>
+    <h1>
+      <span class="line">Reden wir</span>
+      <span class="line italic">über Ihr Projekt.</span>
+    </h1>
+    <p class="sub-hero-lede">
+      Drei Wege, mich zu erreichen. Der schnellste ist meistens der direkte Anruf.
+    </p>
+  </div>
+</section>
+
+<!-- PHONE BIG -->
+<section class="phone-section">
+  <a href="tel:+4917614484245" class="phone-display">
+    <span class="phone-label">Direkt anrufen</span>
+    <span class="phone-number">+49 176 144 842 45</span>
+    <span class="phone-arrow">↗</span>
+  </a>
+
+  <div class="contact-grid">
+    <a href="mailto:info@tobis-hausmeisterservice.de" class="contact-card">
+      <span class="cc-label">E-Mail</span>
+      <span class="cc-value">info@tobis-hausmeisterservice.de</span>
+    </a>
+    <a href="https://wa.me/4917614484245" class="contact-card">
+      <span class="cc-label">WhatsApp</span>
+      <span class="cc-value">+49 176 144 842 45</span>
+    </a>
+    <div class="contact-card">
+      <span class="cc-label">Erreichbarkeit</span>
+      <span class="cc-value">Mo–Fr · 8–18 Uhr</span>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULAR -->
+<section class="form-section">
+  <div class="form-head">
+    <span class="eyebrow">§ Anfrage</span>
+    <h2>Lieber<br/><em>schreiben?</em></h2>
+    <p>Ein paar Zeilen reichen. Ich melde mich innerhalb von 24 Stunden zurück — meistens schneller.</p>
+  </div>
+
+  <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Vielen Dank — wird kontaktiert.';">
+    <div class="form-row">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required placeholder="Vor- und Nachname" />
+      </label>
+      <label>
+        <span>Telefon oder E-Mail</span>
+        <input type="text" name="contact" required placeholder="z.B. 0176 1234567" />
+      </label>
+    </div>
+    <label>
+      <span>Worum geht's?</span>
+      <select name="topic">
+        <option>Neue Elektroinstallation</option>
+        <option>Sanierung / Modernisierung</option>
+        <option>Lichtplanung &amp; Beleuchtung</option>
+        <option>Smart Home</option>
+        <option>Reparatur / Störung</option>
+        <option>Anderes</option>
+      </select>
+    </label>
+    <label>
+      <span>Beschreibung</span>
+      <textarea name="msg" rows="6" required placeholder="Was haben Sie vor? Wann muss es fertig sein? Wo wohnen Sie?"></textarea>
+    </label>
+    <button type="submit" class="btn btn-primary form-submit">
+      <span>Nachricht senden</span>
+      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <p class="form-note">
+      Ich gebe Ihre Daten an niemanden weiter. Versprochen.
+    </p>
+  </form>
+</section>
+
+<!-- INFO STRIP -->
+<section class="info-strip">
+  <div>
+    <span class="is-label">Region</span>
+    <span class="is-value">Auf Anfrage</span>
+  </div>
+  <div>
+    <span class="is-label">Reaktionszeit</span>
+    <span class="is-value">&lt; 24 Stunden</span>
+  </div>
+  <div>
+    <span class="is-label">Erstgespräch</span>
+    <span class="is-value">Kostenlos</span>
+  </div>
+  <div>
+    <span class="is-label">Angebot</span>
+    <span class="is-value">Festpreis</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="brand-mark">⚡</span>
+      <strong>Tobi's Hausmeisterservice</strong>
+    </div>
+    <p class="footer-claim"><em>Elektrik mit Handschrift.</em></p>
+  </div>
+  <nav class="footer-nav">
+    <a href="index.html">Start</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="meister.html">Der Meister</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="footer-bottom">
+    <span>© <span id="year">2026</span> · Tobi's Hausmeisterservice</span>
+    <span class="footer-mono">Meisterbetrieb · Elektrotechnik</span>
+    <a href="#top" class="back-top">Nach oben ↑</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

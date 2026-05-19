@@ -7,17 +7,18 @@
 <meta name="description" content="Elektroinstallationen mit Handschrift. Planung, Beratung und Umsetzung aus einer Meisterhand." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="home">
 
 <div class="grain" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 
 <!-- NAV -->
 <header class="nav">
-  <a href="#top" class="brand">
+  <a href="index.html" class="brand">
     <span class="brand-mark">⚡</span>
     <span class="brand-text">
       <strong>Tobi's</strong>
@@ -25,10 +26,11 @@
     </span>
   </a>
   <nav class="nav-links">
-    <a href="#leistungen">Leistungen</a>
-    <a href="#meister">Der Meister</a>
-    <a href="#prozess">So arbeite ich</a>
-    <a href="#kontakt" class="nav-cta">Kontakt →</a>
+    <a href="index.html" class="is-active">Start</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="meister.html">Der Meister</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="kontakt.html" class="nav-cta">Kontakt →</a>
   </nav>
   <button class="nav-toggle" aria-label="Menü">
     <span></span><span></span>
@@ -38,51 +40,58 @@
 <main id="top">
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-tag">
-    <span class="dot"></span>
-    Elektromeisterbetrieb · seit Jahren im Einsatz
+<section class="hero-cinema">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=2400&q=80" alt="" loading="eager" decoding="async" />
   </div>
+  <div class="hero-overlay"></div>
 
-  <h1 class="hero-title reveal">
-    <span class="line">Strom,</span>
-    <span class="line italic">mit Handschrift</span>
-    <span class="line">verlegt.</span>
-  </h1>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Elektromeisterbetrieb · seit Jahren im Einsatz
+    </div>
 
-  <div class="hero-grid">
-    <p class="hero-lede reveal" data-delay="200">
-      Ich plane, berate und installiere Elektrik für Wohnräume —
-      <em>persönlich, sauber, und durchdacht bis zur letzten Klemme.</em>
-      Kein Callcenter. Kein Subunternehmer. Nur ich, mein Werkzeug
-      und Ihr Projekt.
-    </p>
+    <h1 class="hero-title reveal">
+      <span class="line">Strom,</span>
+      <span class="line italic">mit Handschrift</span>
+      <span class="line">verlegt.</span>
+    </h1>
 
-    <div class="hero-meta reveal" data-delay="400">
-      <div class="meta-block">
-        <span class="meta-num">01</span>
-        <span class="meta-label">Beratung</span>
-      </div>
-      <div class="meta-block">
-        <span class="meta-num">02</span>
-        <span class="meta-label">Planung</span>
-      </div>
-      <div class="meta-block">
-        <span class="meta-num">03</span>
-        <span class="meta-label">Umsetzung</span>
+    <div class="hero-grid">
+      <p class="hero-lede reveal" data-delay="200">
+        Ich plane, berate und installiere Elektrik für Wohnräume —
+        <em>persönlich, sauber, und durchdacht bis zur letzten Klemme.</em>
+        Kein Callcenter. Kein Subunternehmer. Nur ich, mein Werkzeug
+        und Ihr Projekt.
+      </p>
+
+      <div class="hero-meta reveal" data-delay="400">
+        <div class="meta-block">
+          <span class="meta-num">01</span>
+          <span class="meta-label">Beratung</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-num">02</span>
+          <span class="meta-label">Planung</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-num">03</span>
+          <span class="meta-label">Umsetzung</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-actions reveal" data-delay="600">
-    <a href="tel:+4917614484245" class="btn btn-primary">
-      <span>Direkt anrufen</span>
-      <span class="btn-detail">+49 176 14484245</span>
-    </a>
-    <a href="#kontakt" class="btn btn-ghost">
-      Projekt anfragen
-      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-    </a>
+    <div class="hero-actions reveal" data-delay="600">
+      <a href="tel:+4917614484245" class="btn btn-primary">
+        <span>Direkt anrufen</span>
+        <span class="btn-detail">+49 176 14484245</span>
+      </a>
+      <a href="kontakt.html" class="btn btn-ghost">
+        Projekt anfragen
+        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
   </div>
 
   <div class="hero-marquee" aria-hidden="true">
@@ -107,181 +116,80 @@
   </div>
 </section>
 
-<!-- LEISTUNGEN -->
-<section id="leistungen" class="services">
+<!-- INTRO PILLARS -->
+<section class="intro-pillars">
   <div class="section-head">
-    <span class="eyebrow">§ 01 · Leistungen</span>
-    <h2>Was ich für Sie<br/><em>verkable</em>.</h2>
+    <span class="eyebrow">§ 01 · Drei Säulen</span>
+    <h2>Was Sie<br/>von mir <em>bekommen.</em></h2>
   </div>
 
-  <div class="service-list">
-    <article class="service">
-      <span class="service-num">01</span>
-      <div class="service-body">
-        <h3>Elektroinstallation</h3>
-        <p>Vom ersten Kabel bis zur fertigen Steckdose — komplette Installation in Neubau, Altbau und Sanierung. Sauber verlegt, normgerecht abgenommen.</p>
-        <ul class="tags">
-          <li>Unterputz</li><li>Aufputz</li><li>Verteilerbau</li>
-        </ul>
+  <div class="pillar-grid">
+    <article class="pillar">
+      <div class="pillar-image">
+        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=900&q=80" alt="Werkstatt mit Werkzeug" loading="lazy" />
       </div>
+      <span class="pillar-num">01</span>
+      <h3>Saubere Arbeit</h3>
+      <p>Kein Pfusch. Keine halben Sachen. Jede Verbindung sitzt, jede Leitung ist beschriftet, jeder Schalter funktioniert auf Anhieb.</p>
+      <a href="leistungen.html" class="pillar-link">Leistungen ansehen →</a>
     </article>
 
-    <article class="service">
-      <span class="service-num">02</span>
-      <div class="service-body">
-        <h3>Lichtplanung &amp; Beleuchtung</h3>
-        <p>Räume entstehen durch Licht. Ich plane Lichtkonzepte, die Wohnen warm machen und Arbeiten leichter — von der Spot-Anordnung bis zur Smart-Steuerung.</p>
-        <ul class="tags">
-          <li>LED-Konzepte</li><li>Dimmer</li><li>DALI / KNX</li>
-        </ul>
+    <article class="pillar">
+      <div class="pillar-image">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80" alt="Planung am Schreibtisch" loading="lazy" />
       </div>
+      <span class="pillar-num">02</span>
+      <h3>Klare Planung</h3>
+      <p>Bevor ich auch nur eine Wand öffne, sitzen wir am Tisch. Sie wissen genau, was passiert, was es kostet und wie lange es dauert.</p>
+      <a href="meister.html" class="pillar-link">Über mich →</a>
     </article>
 
-    <article class="service">
-      <span class="service-num">03</span>
-      <div class="service-body">
-        <h3>Beratung &amp; Projektplanung</h3>
-        <p>Bevor ein Kabel fließt, sitze ich mit Ihnen am Tisch. Skizze, Plan, Kostenrahmen — transparent und ohne Überraschungen auf der Rechnung.</p>
-        <ul class="tags">
-          <li>Vor-Ort-Termin</li><li>Festpreis</li><li>Bauleitung</li>
-        </ul>
+    <article class="pillar">
+      <div class="pillar-image">
+        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&q=80" alt="Detail Beratung" loading="lazy" />
       </div>
-    </article>
-
-    <article class="service">
-      <span class="service-num">04</span>
-      <div class="service-body">
-        <h3>Smart Home &amp; Modernisierung</h3>
-        <p>Jalousien per App, Heizung per Sensor, Licht nach Tageszeit — moderne Technik, die nicht zickt. Ich richte ein, was Sie wirklich nutzen.</p>
-        <ul class="tags">
-          <li>Homematic</li><li>Shelly</li><li>KNX</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="service">
-      <span class="service-num">05</span>
-      <div class="service-body">
-        <h3>Reparatur &amp; Service</h3>
-        <p>Sicherung fliegt? Steckdose tot? Schalter wackelt? Schnelle Diagnose, ehrliche Lösung. Kein „muss alles neu" — ich repariere, was sich reparieren lässt.</p>
-        <ul class="tags">
-          <li>Fehlersuche</li><li>Notdienst</li><li>Wartung</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="service service-quote">
-      <div class="quote-body">
-        <p>„Bei mir bekommen Sie keine Filiale, keine Hotline und kein <em>Junior-Monteur</em>. Sie bekommen den Meister. Punkt."</p>
-        <span class="quote-attr">— Tobi</span>
-      </div>
+      <span class="pillar-num">03</span>
+      <h3>Persönlich</h3>
+      <p>Sie erreichen direkt mich. Kein Callcenter, kein Mitarbeiterwechsel, kein Junior-Monteur. Eine Person, ein Versprechen.</p>
+      <a href="kontakt.html" class="pillar-link">Kontakt aufnehmen →</a>
     </article>
   </div>
 </section>
 
-<!-- MEISTER -->
-<section id="meister" class="meister">
-  <div class="meister-image">
-    <div class="image-placeholder">
-      <span class="ip-mono">M.</span>
-      <span class="ip-label">Foto folgt</span>
-    </div>
-    <div class="badge">
-      <span class="badge-line">Geprüfter</span>
-      <span class="badge-big">Elektro-<br/>meister</span>
-      <span class="badge-line">·  Handwerk  ·</span>
-    </div>
+<!-- BIG QUOTE -->
+<section class="big-quote">
+  <div class="big-quote-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=2000&q=80" alt="" loading="lazy" />
   </div>
-
-  <div class="meister-body">
-    <span class="eyebrow">§ 02 · Der Meister</span>
-    <h2>Ein Elektriker,<br/>kein <em>Konzern</em>.</h2>
-    <p class="lede">
-      Ich bin Tobi — Elektromeister mit langjähriger Erfahrung
-      und der festen Überzeugung, dass gute Arbeit Zeit, Ruhe und
-      einen klaren Kopf braucht.
-    </p>
+  <blockquote>
     <p>
-      Vor ein paar Jahren habe ich beschlossen: lieber wenige Projekte
-      richtig, als viele halb. Seitdem nehme ich nur an, was ich auch
-      persönlich begleiten kann. Vom ersten Gespräch bis zur Abnahme —
-      eine Stimme, ein Werkzeugkoffer, ein Versprechen.
+      „Bei mir bekommen Sie keine Filiale, keine Hotline und keinen
+      <em>Junior-Monteur</em>. Sie bekommen den Meister.
+      <span class="punkt">Punkt.</span>"
     </p>
-
-    <dl class="facts">
-      <div><dt>Meisterbrief</dt><dd>Elektrotechnik</dd></div>
-      <div><dt>Schwerpunkt</dt><dd>Wohnungsbau · Sanierung</dd></div>
-      <div><dt>Arbeitsweise</dt><dd>Persönlich · Festpreis</dd></div>
-      <div><dt>Region</dt><dd>Auf Anfrage</dd></div>
-    </dl>
-  </div>
+    <footer>— Tobi · Elektromeister</footer>
+  </blockquote>
 </section>
 
-<!-- PROZESS -->
-<section id="prozess" class="prozess">
-  <div class="section-head center">
-    <span class="eyebrow">§ 03 · So arbeite ich</span>
-    <h2>Vier Schritte.<br/><em>Keine Überraschungen.</em></h2>
-  </div>
-
-  <ol class="steps">
-    <li class="step">
-      <span class="step-num">i.</span>
-      <h3>Anruf</h3>
-      <p>Sie erzählen, was ansteht. Ich höre zu und prüfe, ob ich der Richtige bin.</p>
-    </li>
-    <li class="step">
-      <span class="step-num">ii.</span>
-      <h3>Vor Ort</h3>
-      <p>Ich komme persönlich, messe auf, denke mit und mache Vorschläge — kostenlos.</p>
-    </li>
-    <li class="step">
-      <span class="step-num">iii.</span>
-      <h3>Angebot</h3>
-      <p>Klar, fair und mit Festpreis. Sie wissen vorab, was am Ende auf der Rechnung steht.</p>
-    </li>
-    <li class="step">
-      <span class="step-num">iv.</span>
-      <h3>Umsetzung</h3>
-      <p>Sauberes Arbeiten, klare Kommunikation, pünktliche Übergabe. Inklusive Abnahmeprotokoll.</p>
-    </li>
-  </ol>
-</section>
-
-<!-- KONTAKT -->
-<section id="kontakt" class="kontakt">
-  <div class="kontakt-inner">
-    <span class="eyebrow gold">§ 04 · Kontakt</span>
-    <h2 class="kontakt-title">
-      Reden wir<br/>
-      <em>über Ihr Projekt.</em>
-    </h2>
-
-    <a href="tel:+4917614484245" class="phone-display">
-      <span class="phone-label">Direkt anrufen</span>
-      <span class="phone-number">+49 176 144 842 45</span>
-      <span class="phone-arrow">↗</span>
-    </a>
-
-    <div class="contact-grid">
-      <a href="mailto:info@tobis-hausmeisterservice.de" class="contact-card">
-        <span class="cc-label">E-Mail</span>
-        <span class="cc-value">info@tobis-hausmeisterservice.de</span>
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <span class="eyebrow gold">Ihr Projekt</span>
+    <h2 class="cta-title">Lassen Sie uns<br/><em>anfangen.</em></h2>
+    <p class="cta-text">Eine kurze Nachricht, ein Anruf, eine WhatsApp — der erste Schritt ist immer der gleiche: zuhören.</p>
+    <div class="cta-buttons">
+      <a href="tel:+4917614484245" class="btn btn-primary">
+        <span>Direkt anrufen</span>
+        <span class="btn-detail">+49 176 14484245</span>
       </a>
-      <a href="https://wa.me/4917614484245" class="contact-card">
-        <span class="cc-label">WhatsApp</span>
-        <span class="cc-value">+49 176 144 842 45</span>
-      </a>
-      <div class="contact-card">
-        <span class="cc-label">Erreichbarkeit</span>
-        <span class="cc-value">Mo–Fr · 8–18 Uhr</span>
-      </div>
+      <a href="kontakt.html" class="btn btn-ghost">Alle Wege zu mir →</a>
     </div>
   </div>
 </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-brand">
@@ -290,6 +198,13 @@
     </div>
     <p class="footer-claim"><em>Elektrik mit Handschrift.</em></p>
   </div>
+  <nav class="footer-nav">
+    <a href="index.html">Start</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="meister.html">Der Meister</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
   <div class="footer-bottom">
     <span>© <span id="year">2026</span> · Tobi's Hausmeisterservice</span>
     <span class="footer-mono">Meisterbetrieb · Elektrotechnik</span>
