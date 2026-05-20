@@ -1,0 +1,142 @@
+/* ============================================
+   PHONE SECTION — Big phone CTA + 3 contact cards
+   Animation: Phone number drops digit-by-digit from above
+              Each card scale-pops from bottom-right corner
+   ============================================ */
+
+.phone-section{
+  padding-top:clamp(80px,10vw,120px);
+  padding-bottom:0;
+}
+
+.phone-display{
+  display:flex; flex-direction:column;
+  text-decoration:none;
+  color:var(--text);
+  padding:48px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(15,29,23,.5);
+  margin-bottom:24px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .35s, transform .35s var(--ease-spring);
+
+  opacity:0;
+  transform:translateY(40px);
+  animation:phone-card-in 1s var(--ease-out) .1s forwards;
+}
+@keyframes phone-card-in{
+  to{ opacity:1; transform:none; }
+}
+
+.phone-display::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(201,169,110,.18), transparent 50%);
+  opacity:0; transition:opacity .35s;
+  pointer-events:none;
+}
+.phone-display:hover{
+  border-color:var(--gold);
+  transform:translateY(-3px);
+}
+.phone-display:hover::before{ opacity:1; }
+
+.phone-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+  position:relative;
+}
+
+.phone-number{
+  font-family:var(--serif);
+  font-size:clamp(38px,7vw,96px);
+  letter-spacing:-.02em;
+  color:var(--text);
+  line-height:1;
+  position:relative;
+  font-variation-settings:"opsz" 144, "SOFT" 0;
+}
+
+/* Each digit drops from above, sequential — split by JS */
+.phone-number .digit{
+  display:inline-block;
+  transform:translateY(-120%);
+  opacity:0;
+  animation:phone-digit-drop .7s var(--ease-spring) forwards;
+  animation-delay:calc(var(--i, 0) * 80ms + .4s);
+}
+@keyframes phone-digit-drop{
+  to{ transform:translateY(0); opacity:1; }
+}
+
+.phone-arrow{
+  position:absolute; top:24px; right:32px;
+  font-family:var(--serif);
+  font-size:28px;
+  color:var(--gold);
+  transition:transform .35s var(--ease-spring);
+  opacity:0;
+  animation:phone-arrow-in .6s var(--ease-spring) 1.4s forwards;
+}
+@keyframes phone-arrow-in{
+  from{ opacity:0; transform:translate(-10px, 10px) rotate(-45deg); }
+  to  { opacity:1; transform:translate(0, 0) rotate(0); }
+}
+.phone-display:hover .phone-arrow{ transform:translate(4px,-4px); }
+
+/* Contact cards — scale-pop from bottom-right corner */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.contact-card{
+  display:flex; flex-direction:column; gap:8px;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--text);
+  background:rgba(15,29,23,.3);
+  transition:border-color .25s, background .25s, transform .35s var(--ease-spring);
+
+  opacity:0;
+  transform:scale(.5) translate(40px, 40px);
+  transform-origin:bottom right;
+}
+.contact-card:nth-child(1){ animation:contact-corner-pop .8s var(--ease-spring) 1.5s forwards; }
+.contact-card:nth-child(2){ animation:contact-corner-pop .8s var(--ease-spring) 1.65s forwards; }
+.contact-card:nth-child(3){ animation:contact-corner-pop .8s var(--ease-spring) 1.8s forwards; }
+@keyframes contact-corner-pop{
+  to{ opacity:1; transform:scale(1) translate(0,0); }
+}
+a.contact-card:hover{
+  border-color:var(--gold);
+  background:rgba(20,39,31,.5);
+  transform:translateY(-3px);
+}
+
+.cc-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.cc-value{
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--text);
+}
+
+@media (max-width: 960px){
+  .contact-grid{ grid-template-columns:1fr; }
+}
+@media (max-width: 600px){
+  .phone-display{ padding:32px 20px; }
+}

@@ -1,0 +1,78 @@
+/* ============================================
+   CTA BAND — Call to action section
+   Animation: Title "iris" reveal — clip-path opens from center
+              Buttons slide in from opposite corners
+   ============================================ */
+
+.cta-band{
+  background:linear-gradient(180deg, rgba(10,20,16,1), rgba(15,29,23,.8));
+  text-align:center;
+  border-top:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.cta-band::before{
+  content:"";
+  position:absolute; inset:auto 0 0 0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform 1.6s var(--ease-out) .2s;
+}
+.cta-band.in-view::before{
+  transform:scaleX(1);
+}
+
+.cta-inner{ max-width:1000px; margin:0 auto; position:relative; }
+
+.cta-band .eyebrow{
+  opacity:0;
+  transform:translateY(-10px);
+  transition:opacity .8s var(--ease-out) .2s, transform .8s var(--ease-out) .2s;
+}
+.cta-band.in-view .eyebrow{ opacity:1; transform:none; }
+
+.cta-title{
+  font-size:clamp(48px, 9vw, 130px);
+  margin-bottom:32px;
+  clip-path:inset(50% 0 50% 0);
+  transition:clip-path 1.2s var(--ease-out) .4s;
+}
+.cta-band.in-view .cta-title{
+  clip-path:inset(0 0 0 0);
+}
+
+.cta-text{
+  font-family:var(--serif);
+  font-size:clamp(18px, 2vw, 24px);
+  color:var(--text);
+  font-weight:300;
+  margin-bottom:48px;
+  font-variation-settings:"opsz" 30, "SOFT" 50;
+  max-width:60ch;
+  margin-left:auto; margin-right:auto;
+
+  opacity:0;
+  transition:opacity 1s var(--ease-out) 1s;
+}
+.cta-band.in-view .cta-text{ opacity:1; }
+
+.cta-buttons{
+  display:flex; gap:16px; flex-wrap:wrap; justify-content:center;
+}
+.cta-buttons > *:first-child{
+  opacity:0;
+  transform:translate(-60px, 30px);
+  transition:opacity .9s var(--ease-spring) 1.2s,
+             transform .9s var(--ease-spring) 1.2s;
+}
+.cta-buttons > *:last-child{
+  opacity:0;
+  transform:translate(60px, 30px);
+  transition:opacity .9s var(--ease-spring) 1.35s,
+             transform .9s var(--ease-spring) 1.35s;
+}
+.cta-band.in-view .cta-buttons > *{
+  opacity:1; transform:none;
+}

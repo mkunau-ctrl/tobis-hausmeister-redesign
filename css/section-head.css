@@ -1,0 +1,41 @@
+/* ============================================
+   SECTION HEAD — Eyebrow + Headline
+   Animation: eyebrow types in, headline lifts
+   ============================================ */
+
+.section-head{
+  display:flex; flex-direction:column;
+  margin-bottom:80px;
+  max-width:900px;
+}
+.section-head.center{
+  align-items:center; text-align:center;
+  margin-left:auto; margin-right:auto;
+}
+.section-head h2{
+  font-size:clamp(48px, 8vw, 120px);
+  letter-spacing:-.03em;
+}
+
+[data-anim="section-head"] .eyebrow{
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+  max-width:0;
+  transition:max-width .9s steps(40, end);
+}
+[data-anim="section-head"].in-view .eyebrow{
+  max-width:600px;
+}
+
+[data-anim="section-head"] h2{
+  opacity:0;
+  transform:translateY(40px);
+  filter:blur(8px);
+  transition:opacity 1s var(--ease-out) .3s,
+             transform 1.1s var(--ease-out) .3s,
+             filter 1.1s var(--ease-out) .3s;
+}
+[data-anim="section-head"].in-view h2{
+  opacity:1; transform:none; filter:blur(0);
+}

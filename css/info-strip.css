@@ -1,0 +1,82 @@
+/* ============================================
+   INFO STRIP — 4-cell footer info bar on Kontakt page
+   Animation: Diagonal gold gradient sweep travels L→R
+              through all 4 cells. Cells fade up with elastic.
+   ============================================ */
+
+.info-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:0;
+  background:rgba(15,29,23,.5);
+  position:relative;
+  overflow:hidden;
+}
+
+/* Diagonal sweep that wipes across the whole strip */
+.info-strip::before{
+  content:"";
+  position:absolute; top:0; bottom:0;
+  width:30%;
+  background:linear-gradient(110deg,
+    transparent 30%,
+    rgba(201,169,110,.18) 50%,
+    transparent 70%);
+  transform:translateX(-200%);
+  transition:transform 2.4s var(--ease-out) .4s;
+  pointer-events:none;
+}
+.info-strip.in-view::before{
+  transform:translateX(450%);
+}
+
+.info-strip > div{
+  padding:36px 24px;
+  border-right:1px solid var(--line);
+  display:flex; flex-direction:column; gap:8px;
+  position:relative;
+  z-index:1;
+
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .7s var(--ease-spring), transform .7s var(--ease-spring);
+}
+.info-strip > div:nth-child(1){ transition-delay:.1s; }
+.info-strip > div:nth-child(2){ transition-delay:.22s; }
+.info-strip > div:nth-child(3){ transition-delay:.34s; }
+.info-strip > div:nth-child(4){ transition-delay:.46s; }
+.info-strip.in-view > div{
+  opacity:1; transform:none;
+}
+
+.info-strip > div:last-child{ border-right:0; }
+
+.is-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.is-value{
+  font-family:var(--serif);
+  font-size:24px;
+  color:var(--text);
+  font-style:italic;
+  font-variation-settings:"opsz" 144, "WONK" 1;
+}
+
+@media (max-width: 1024px){
+  .info-strip{ grid-template-columns:repeat(2,1fr); }
+  .info-strip > div:nth-child(2){ border-right:0; }
+  .info-strip > div:nth-child(1), .info-strip > div:nth-child(2){
+    border-bottom:1px solid var(--line);
+  }
+}
+@media (max-width: 600px){
+  .info-strip{ grid-template-columns:1fr; }
+  .info-strip > div{ border-right:0 !important; border-bottom:1px solid var(--line); }
+  .info-strip > div:last-child{ border-bottom:0; }
+}

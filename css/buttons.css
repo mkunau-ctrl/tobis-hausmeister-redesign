@@ -1,0 +1,70 @@
+/* ============================================
+   BUTTONS — Primary, Ghost
+   Animation: gold shimmer sweep on hover (primary)
+   ============================================ */
+
+.btn{
+  display:inline-flex; align-items:center; gap:14px;
+  padding:18px 28px;
+  border-radius:999px;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.02em;
+  text-decoration:none;
+  cursor:pointer;
+  border:1px solid transparent;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s var(--ease-out), background .3s var(--ease-out), color .3s var(--ease-out), border-color .3s var(--ease-out);
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:var(--bg);
+  border-color:var(--gold);
+}
+.btn-primary::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
+  transform:translateX(-110%);
+  transition:transform .8s var(--ease-out);
+}
+.btn-primary:hover{
+  background:var(--gold-bright);
+  border-color:var(--gold-bright);
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px -10px rgba(201,169,110,.5);
+}
+.btn-primary:hover::before{ transform:translateX(110%); }
+
+.btn-primary > *{ position:relative; }
+.btn-primary .btn-detail{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:500;
+  opacity:.7;
+  padding-left:14px;
+  border-left:1px solid rgba(10,20,16,.4);
+}
+
+.btn-ghost{
+  background:transparent;
+  color:var(--text);
+  border-color:var(--line);
+}
+.btn-ghost::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at var(--bx,50%) var(--by,50%), rgba(201,169,110,.18), transparent 60%);
+  opacity:0; transition:opacity .35s;
+  pointer-events:none;
+}
+.btn-ghost:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  transform:translateY(-2px);
+}
+.btn-ghost:hover::after{ opacity:1; }

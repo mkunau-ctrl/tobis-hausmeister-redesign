@@ -1,0 +1,175 @@
+/* ============================================
+   MEISTER DETAIL — Portrait + bio + brass badge
+   Animation: Portrait reveals via circular mask expanding from center
+              Body lines slide in from left with border-draw underline
+              Badge springs in then rotates continuously
+   ============================================ */
+
+.meister-detail{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:clamp(40px,6vw,100px);
+  align-items:center;
+}
+
+.md-image{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:4px;
+  clip-path:circle(0% at 50% 50%);
+  transition:clip-path 1.6s var(--ease-out) .2s;
+}
+.meister-detail.in-view .md-image{
+  clip-path:circle(75% at 50% 50%);
+}
+.md-image img{
+  width:100%; height:100%; object-fit:cover;
+  filter:grayscale(.3) brightness(.85);
+  transform:scale(1.1);
+  transition:transform 1.8s var(--ease-out) .2s;
+}
+.meister-detail.in-view .md-image img{
+  transform:scale(1);
+}
+
+.badge{
+  position:absolute;
+  bottom:-30px; right:-30px;
+  width:180px; height:180px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--bg);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+
+  opacity:0;
+  transform:scale(0) rotate(-180deg);
+  transition:opacity .6s var(--ease-out) 1.5s,
+             transform 1s var(--ease-elastic) 1.5s;
+}
+.meister-detail.in-view .badge{
+  opacity:1;
+  transform:scale(1) rotate(0);
+  animation:md-badge-spin 40s linear 2.5s infinite;
+}
+@keyframes md-badge-spin{
+  to{ transform:rotate(360deg); }
+}
+.badge-line{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.badge-big{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:24px;
+  line-height:1.05;
+  margin:6px 0;
+  font-variation-settings:"opsz" 144, "WONK" 1;
+}
+
+/* Body */
+.md-body h2{
+  font-size:clamp(40px, 6vw, 90px);
+  margin-bottom:32px;
+  opacity:0;
+  transform:translateX(-40px);
+  transition:opacity 1s var(--ease-out) .5s,
+             transform 1s var(--ease-out) .5s;
+}
+.meister-detail.in-view .md-body h2{
+  opacity:1; transform:none;
+}
+
+.md-body .lede,
+.md-body p{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+.md-body .lede{
+  font-family:var(--serif);
+  font-size:clamp(18px, 1.8vw, 22px);
+  line-height:1.45;
+  color:var(--text);
+  font-weight:300;
+  margin-bottom:24px;
+  font-variation-settings:"opsz" 30, "SOFT" 50;
+  transition-delay:.7s;
+}
+.md-body p{
+  color:var(--text-muted);
+  font-size:16px;
+  line-height:1.7;
+  max-width:62ch;
+  margin-bottom:20px;
+}
+.md-body p:nth-of-type(1){ transition-delay:.85s; }
+.md-body p:nth-of-type(2){ transition-delay:1s; }
+.md-body p:nth-of-type(3){ transition-delay:1.15s; }
+.meister-detail.in-view .md-body .lede,
+.meister-detail.in-view .md-body p{
+  opacity:1; transform:none;
+}
+
+.facts{
+  margin:48px 0 0;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  padding-top:32px;
+  border-top:1px solid var(--line);
+  position:relative;
+}
+.facts::before{
+  content:"";
+  position:absolute; top:0; left:0;
+  width:0; height:1px;
+  background:var(--gold);
+  transition:width 1.4s var(--ease-out) 1.3s;
+}
+.meister-detail.in-view .facts::before{
+  width:100%;
+}
+.facts > div{
+  display:flex; flex-direction:column; gap:6px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+.facts > div:nth-child(1){ transition-delay:1.4s; }
+.facts > div:nth-child(2){ transition-delay:1.55s; }
+.facts > div:nth-child(3){ transition-delay:1.7s; }
+.facts > div:nth-child(4){ transition-delay:1.85s; }
+.meister-detail.in-view .facts > div{
+  opacity:1; transform:none;
+}
+.facts dt{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.facts dd{
+  margin:0;
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--text);
+}
+
+@media (max-width: 1024px){
+  .meister-detail{ grid-template-columns:1fr; }
+  .md-image{ max-width:480px; aspect-ratio:4/5; }
+}
+@media (max-width: 960px){
+  .badge{ width:140px; height:140px; bottom:-20px; right:-10px; }
+  .badge-big{ font-size:20px; }
+}
+@media (max-width: 600px){
+  .facts{ grid-template-columns:1fr; }
+}

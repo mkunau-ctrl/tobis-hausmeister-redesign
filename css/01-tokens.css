@@ -1,0 +1,40 @@
+/* ============================================
+   DESIGN TOKENS — Variables, Colors, Fonts
+   Used by ALL other CSS modules.
+   ============================================ */
+
+:root{
+  /* Surface */
+  --bg:           #0a1410;
+  --bg-raised:    #0f1d17;
+  --bg-elev:      #14271f;
+  --line:         #1f3329;
+  --line-soft:    #182a22;
+
+  /* Brand */
+  --gold:         #c9a96e;
+  --gold-bright:  #e8c878;
+  --gold-dim:     #8a7548;
+  --copper:       #b87333;
+
+  /* Text */
+  --text:         #f3ede0;
+  --text-muted:   #8c9690;
+  --text-dim:     #5e6d65;
+
+  /* Type */
+  --serif:  "Fraunces", "Times New Roman", serif;
+  --sans:   "Manrope", system-ui, -apple-system, sans-serif;
+  --mono:   "JetBrains Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --container: 1280px;
+  --gutter: clamp(20px, 4vw, 64px);
+
+  /* Easing — used across all animation modules */
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-elastic: cubic-bezier(.68, -0.55, .27, 1.55);
+  --ease-soft:   cubic-bezier(.3, 0, .2, 1);
+}
