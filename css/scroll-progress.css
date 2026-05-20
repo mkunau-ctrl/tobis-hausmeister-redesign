@@ -1,0 +1,92 @@
+/* ============================================
+   SCROLL PROGRESS BAR — Fixed bar at top of viewport
+   Shows reading/scroll position across the page.
+   Plus a small label that names the current section.
+   ============================================ */
+
+.scroll-progress{
+  position:fixed;
+  top:0; left:0; right:0;
+  height:3px;
+  z-index:100;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(201,169,110,.06),
+      rgba(201,169,110,.03) 50%,
+      transparent);
+}
+
+.scroll-progress__fill{
+  position:relative;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, var(--gold), var(--gold-bright));
+  box-shadow:
+    0 0 14px rgba(201,169,110,.55),
+    0 0 4px rgba(232,200,120,.8);
+  will-change:width;
+}
+
+/* Glowing head dot at the leading edge */
+.scroll-progress__fill::after{
+  content:"";
+  position:absolute;
+  top:50%; right:-4px;
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--gold-bright);
+  transform:translateY(-50%);
+  box-shadow:
+    0 0 10px var(--gold-bright),
+    0 0 18px rgba(232,200,120,.5);
+}
+
+/* Section label — floats in the top-right, follows current section */
+.scroll-progress__label{
+  position:fixed;
+  top:18px; right:calc(var(--gutter) + 4px);
+  z-index:99;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  padding:6px 12px;
+  background:rgba(10,20,16,.75);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--line);
+  border-radius:999px;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity .35s var(--ease-out), transform .35s var(--ease-out);
+  pointer-events:none;
+  display:flex; align-items:center; gap:8px;
+}
+.scroll-progress__label.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.scroll-progress__label::before{
+  content:"";
+  width:5px; height:5px;
+  border-radius:50%;
+  background:var(--gold-bright);
+  box-shadow:0 0 6px var(--gold-bright);
+  animation:scroll-label-pulse 2s ease-in-out infinite;
+}
+@keyframes scroll-label-pulse{
+  0%,100%{ opacity:1; }
+  50%   { opacity:.4; }
+}
+
+@media (max-width: 600px){
+  .scroll-progress__label{
+    display:none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .scroll-progress__fill{ transition:none; }
+}

@@ -160,4 +160,116 @@
     });
   });
 
+  // --- SCROLL PROGRESS BAR ---
+  // Inject the bar + section label once, then update on scroll.
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  const progressFill = document.createElement('div');
+  progressFill.className = 'scroll-progress__fill';
+  progress.appendChild(progressFill);
+  document.body.appendChild(progress);
+
+  const label = document.createElement('div');
+  label.className = 'scroll-progress__label';
+  label.setAttribute('aria-hidden', 'true');
+  const labelText = document.createElement('span');
+  labelText.className = 'scroll-progress__label-text';
+  labelText.textContent = 'Start';
+  label.appendChild(labelText);
+  document.body.appendChild(label);
+
+  // Map section selectors → friendly section names (per-page).
+  // The first match for any visible section wins.
+  const SECTION_MAP = [
+    { sel: '.hero-cinema',     name: 'Start' },
+    { sel: '.sub-hero',        name: 'Übersicht' },
+    { sel: '.intro-pillars',   name: 'Drei Säulen' },
+    { sel: '#elektroinstallation', name: 'Installation' },
+    { sel: '#licht',           name: 'Lichtplanung' },
+    { sel: '#beratung',        name: 'Beratung' },
+    { sel: '#smart',           name: 'Smart Home' },
+    { sel: '#reparatur',       name: 'Reparatur' },
+    { sel: '.meister-detail',  name: 'Der Meister' },
+    { sel: '.werte',           name: 'Werte' },
+    { sel: '.gallery',         name: 'Referenzen' },
+    { sel: '.ref-note',        name: 'Referenzen' },
+    { sel: '.phone-section',   name: 'Kontakt' },
+    { sel: '.form-section',    name: 'Anfrage' },
+    { sel: '.info-strip',      name: 'Info' },
+    { sel: '.big-quote',       name: 'Zitat' },
+    { sel: '.cta-band',        name: 'Anfragen' },
+    { sel: '.footer',          name: 'Footer' }
+  ];
+
+  // Resolve once, drop entries that don't exist on this page.
+  const sectionRefs = SECTION_MAP
+    .map(({ sel, name }) => ({ el: document.querySelector(sel), name }))
+    .filter((r) => r.el);
+
+  let lastName = '';
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop || window.scrollY || 0;
+    const total = h.scrollHeight - h.clientHeight;
+    const pct = total > 0 ? Math.min(100, Math.max(0, (scrolled / total) * 100)) : 0;
+    progressFill.style.width = pct + '%';
+
+    // Show label only after user has scrolled a bit
+    if (scrolled > 120) label.classList.add('is-visible');
+    else                 label.classList.remove('is-visible');
+
+    // Find the section whose top has passed 35% of viewport — that's "current"
+    const triggerY = window.innerHeight * 0.35;
+    let active = sectionRefs[0];
+    for (const ref of sectionRefs) {
+      const r = ref.el.getBoundingClientRect();
+      if (r.top <= triggerY) active = ref;
+      else break;
+    }
+    if (active && active.name !== lastName) {
+      labelText.textContent = active.name;
+      lastName = active.name;
+    }
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // --- LENIS SMOOTH SCROLL ---
+  // Load dynamically so each HTML page stays unchanged.
+  const lenisScript = document.createElement('script');
+  lenisScript.src = 'https://unpkg.com/lenis@1.1.20/dist/lenis.min.js';
+  lenisScript.onload = () => {
+    if (!window.Lenis) return;
+    const lenis = new window.Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2
+    });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // Make in-page anchor links use Lenis for smooth jumps too
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+          }
+        }
+      });
+    });
+
+    // Keep the progress bar in sync with Lenis's interpolated scroll
+    lenis.on('scroll', updateProgress);
+  };
+  document.head.appendChild(lenisScript);
+
 })();
